@@ -1,9 +1,11 @@
 {
   "fluido-1": {
-    "vol-min": 1,
-    "pres-min": 0.5,
-    "psv-min": 25,
-    "ps-min": 200,
+    "mainData": {
+      "vol-min": 1,
+      "pres-min": 0.5,
+      "psv-min": 25,
+      "ps-min": 200
+    },
     "cat": {
       "25": "Art-4.3",
       "50": "I",
@@ -16,10 +18,12 @@
     }
   },
   "fluido-2": {
-    "vol-min": 1,
-    "pres-min": 0.5,
-    "psv-min": 50,
-    "ps-min": 1000,
+    "mainData": {
+      "vol-min": 1,
+      "pres-min": 0.5,
+      "psv-min": 50,
+      "ps-min": 1000
+    },
     "cat": {
       "50": "Art-4.3",
       "200": "I",
