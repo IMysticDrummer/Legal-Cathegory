@@ -1,29 +1,59 @@
 import { useEffect, useState } from 'react';
 //import { Form, InputGroup } from 'react-bootstrap';
-import { fluids, rep } from '../../lib/epDataReader';
-import FluidSelector from './FluidSelector';
+import {
+  epTypes,
+  fluidTypes,
+  fluidCathegories,
+  rep,
+  fluidData,
+} from '../../lib/epDataReader';
+import Selector from './Selector';
 import NumberInput from './NumberInput';
+import repCathegoritzation from '../../lib/repCathegoritzation';
+const FLUIDTYPE = 'fluidType';
+const FLUIDCATHEGORY = 'fluidCathegory';
+const EPTYPE = 'epType';
 
 const intialState = {
-  fluid: '',
+  epType: '',
+  fluidType: '',
+  fluidCathegory: '',
   ps: 0,
   vol: 0,
-  mainData: {},
+  minConditions: {},
   cat: {},
 };
 
 function EpCalculator() {
   const [state, setState] = useState(intialState);
 
+  const fluidList = () => fluidTypes(state.epType);
+  const cathegoryList = () => fluidCathegories(state.epType, state.fluidType);
+
   const change = (event) => {
     const data = event.target.value;
     let newState;
-    if (event.target.name === 'fluidType') {
+
+    if (event.target.name === EPTYPE) {
       newState = {
         ...state,
-        mainData: rep[data].mainData,
-        cat: rep[data].cat,
-        fluid: data,
+        epType: data,
+      };
+    }
+    if (event.target.name === FLUIDTYPE) {
+      newState = {
+        ...state,
+        fluidType: data,
+      };
+    }
+    if (event.target.name === FLUIDCATHEGORY) {
+      const fluidDataResult = fluidData(state.epType, state.fluidType, data);
+      console.log('fluidDataResult', fluidDataResult);
+      newState = {
+        ...state,
+        minConditions: fluidDataResult.minConditions,
+        cat: fluidDataResult.cat,
+        fluidCathegory: data,
       };
     }
     if (event.target.name === 'PS') {
@@ -42,19 +72,42 @@ function EpCalculator() {
   };
 
   useEffect(() => {
-    //epDataReader();
-  }, []);
+    const result = repCathegoritzation(state);
+    console.log('resultado', result);
+  }, [state]);
 
   return (
     <div className='container-lg'>
       <h2>Calculadora de Equipos a Presión</h2>
-      <FluidSelector
-        value={state.fluid}
+      <Selector
+        name={EPTYPE}
+        label='Tipo de equipo a presión'
+        value={state.epType}
         onChange={change}
-        fluidSelected={state.fluid}
-        fluidsList={fluids}
+        fluidSelected={state.epType}
+        fluidsList={epTypes}
       />
-      {state.fluid !== '' && (
+      {state.epType !== '' && (
+        <Selector
+          name={FLUIDTYPE}
+          label='Estado del fluido'
+          value={state.fluidType}
+          onChange={change}
+          fluidSelected={state.fluidType}
+          fluidsList={fluidList()}
+        />
+      )}
+      {state.fluidType !== '' && (
+        <Selector
+          name={FLUIDCATHEGORY}
+          label='Tipo de fluido'
+          value={state.fluidCathegory}
+          onChange={change}
+          fluidSelected={state.fluidCathegory}
+          fluidsList={cathegoryList()}
+        />
+      )}
+      {state.fluidCathegory !== '' && (
         <NumberInput
           id='ps'
           label='Presión Máxima Admisible (PS)'

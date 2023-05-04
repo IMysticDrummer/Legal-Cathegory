@@ -1,38 +1,148 @@
 {
-  "fluido-1": {
-    "mainData": {
-      "vol-min": 1,
-      "pres-min": 0.5,
-      "psv-min": 25,
-      "ps-min": 200
+  "vessels": {
+    "gas": {
+      "fluidType1": {
+        "minConditions": {
+          "square": 1,
+          "pressMin": 0.1,
+          "volMin": 0.1,
+          "presMinToREP": 0.5
+        },
+        "cat": {
+          "art43": {
+            "condition1": {
+              "volume": 1,
+              "ps": 200
+            },
+            "condition2": {
+              "pxv": 25
+            }
+          },
+          "I": {
+            "condition1": {
+              "pxv": 50
+            }
+          },
+          "II": {
+            "condition1": {
+              "pxv": 50
+            }
+          },
+          "III": {
+            "condition1": {
+              "ps": 1000,
+              "pxv": 1000
+            }
+          }
+        }
+      },
+      "fluidType2": {
+        "minConditions": {
+          "square": 2,
+          "pressMin": 0.1,
+          "volMin": 0.1,
+          "presMinToREP": 0.5
+        },
+        "cat": {
+          "art43": {
+            "condition1": {
+              "volume": 1,
+              "ps": 1000
+            },
+            "condition2": {
+              "pxv": 50
+            }
+          },
+          "I": {
+            "condition1": {
+              "pxv": 200
+            }
+          },
+          "II": {
+            "condition1": {
+              "pxv": 1000
+            }
+          },
+          "III": {
+            "condition1": {
+              "ps": 3000,
+              "pxv": 3000
+            },
+            "condition2": {
+              "ps": 4,
+              "volume": 1000
+            }
+          }
+        }
+      }
     },
-    "cat": {
-      "25": "Art-4.3",
-      "50": "I",
-      "200": "II",
-      "1000": "III",
-      "Art-4.3": 25,
-      "I": 50,
-      "II": 200,
-      "III": 1000
-    }
-  },
-  "fluido-2": {
-    "mainData": {
-      "vol-min": 1,
-      "pres-min": 0.5,
-      "psv-min": 50,
-      "ps-min": 1000
-    },
-    "cat": {
-      "50": "Art-4.3",
-      "200": "I",
-      "1000": "II",
-      "3000": "III",
-      "Art-4.3": 50,
-      "I": 200,
-      "II": 1000,
-      "III": 3000
+    "liquid": {
+      "fluidType1": {
+        "minConditions": {
+          "square": 3,
+          "pressMin": 0.1,
+          "volMin": 0.1,
+          "presMinToREP": 0.5
+        },
+        "cat": {
+          "art43": {
+            "condition1": {
+              "volume": 1,
+              "ps": 500
+            },
+            "condition2": {
+              "pxv": 200
+            }
+          },
+          "I": {
+            "condition1": {
+              "ps": 10
+            }
+          },
+          "II": {
+            "condition1": {
+              "ps": 500
+            },
+            "condition2": {
+              "volume": "lt11",
+              "ps": "gt500"
+            }
+          }
+        }
+      },
+      "fluidType2": {
+        "minConditions": {
+          "square": 4,
+          "pressMin": 0.1,
+          "volMin": 0.1,
+          "presMinToREP": 0.5
+        },
+        "cat": {
+          "art43": {
+            "condition1": {
+              "volume": 10,
+              "ps": 1000
+            },
+            "condition2": {
+              "volume": 1000,
+              "pxv": 10000
+            },
+            "condition3": {
+              "volume": "gt1000",
+              "ps": 10
+            }
+          },
+          "I": {
+            "condition1": {
+              "volume": 10,
+              "ps": "gt1000"
+            },
+            "condition2": {
+              "ps": 500
+            }
+          }
+        }
+      }
     }
   }
 }

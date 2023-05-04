@@ -1,6 +1,8 @@
 import { Form, InputGroup } from 'react-bootstrap';
 
-export default function FluidSelector({
+export default function Selector({
+  name,
+  label,
   value,
   onChange,
   fluidSelected,
@@ -10,19 +12,19 @@ export default function FluidSelector({
   return (
     <InputGroup className='mb-3 primary row align-items-center'>
       <InputGroup.Text
-        id='fluidType'
+        id={name}
         className='primary col-md-2'
       >
-        Tipo de Fluido
+        {label}
       </InputGroup.Text>
       <Form.Select
-        aria-label='fluidType'
-        name='fluidType'
+        aria-label={name}
+        name={name}
         value={value}
         onChange={onChange}
         className='col-md-8'
       >
-        {fluidSelected === '' && <option key='empty'>Tipo de fluido</option>}
+        {fluidSelected === '' && <option key='empty'>{label}</option>}
         {fluidsList.map((element) => {
           return (
             <option

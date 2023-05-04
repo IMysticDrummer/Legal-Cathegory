@@ -1,6 +1,15 @@
 import repRules from './databases/rep.json';
 
-export const fluids = Object.keys(repRules);
+export const epTypes = Object.keys(repRules);
+
+export const fluidTypes = (epType) => Object.keys(repRules[epType]);
+
+export const fluidCathegories = (epType, fluidType) =>
+  Object.keys(repRules[epType][fluidType]);
+
+export const fluidData = (epType, fluidType, fluidCathegory) => {
+  return repRules[epType][fluidType][fluidCathegory];
+};
 
 export const rep = repRules;
 

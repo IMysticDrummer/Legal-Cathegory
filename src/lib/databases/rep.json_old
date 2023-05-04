@@ -1,0 +1,80 @@
+{
+  "vessel": {
+    "gas": {
+      "fluido-1": {
+        "mainData": {
+          "volMin": 1,
+          "presMinToREP": 0.5,
+          "psvMin": 25,
+          "psMinToIII": 200
+        },
+        "cat": {
+          "25": "Art-4.3",
+          "50": "I",
+          "200": "II",
+          "1000": "III",
+          "Art43": 25,
+          "I": 50,
+          "II": 200,
+          "III": 1000
+        }
+      },
+      "fluido-2": {
+        "mainData": {
+          "volMin": 1,
+          "presMinToREP": 0.5,
+          "psvMin": 50,
+          "psMinToIII": 1000
+        },
+        "cat": {
+          "50": "Art-4.3",
+          "200": "I",
+          "1000": "II",
+          "3000": "III",
+          "Art43": 50,
+          "I": 200,
+          "II": 1000,
+          "III": 3000
+        }
+      }
+    },
+    "liquid": {
+      "fluido-1": {
+        "mainData": {
+          "volMin": 1,
+          "presMinToREP": 0.5,
+          "psvMin": 200,
+          "psMinToIII": 500
+        },
+        "cat": {
+          "25": "Art-4.3",
+          "50": "I",
+          "200": "II",
+          "1000": "III",
+          "Art43": 25,
+          "I": 50,
+          "II": 200,
+          "III": 1000
+        }
+      },
+      "fluido-2": {
+        "mainData": {
+          "volMin": 1,
+          "presMinToREP": 0.5,
+          "psvMin": 50,
+          "psMinToIII": 1000
+        },
+        "cat": {
+          "50": "Art-4.3",
+          "200": "I",
+          "1000": "II",
+          "3000": "III",
+          "Art43": 50,
+          "I": 200,
+          "II": 1000,
+          "III": 3000
+        }
+      }
+    }
+  }
+}
