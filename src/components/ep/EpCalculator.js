@@ -6,10 +6,10 @@ import {
   fluidCathegories,
   rep,
   fluidData,
-} from '../../lib/epDataReader';
+} from '../../lib/repModules/epDataReader';
 import Selector from './Selector';
 import NumberInput from './NumberInput';
-import repCathegoritzation from '../../lib/repCathegoritzation';
+import repCathegoritzation from '../../lib/repModules/repCathegoritzation';
 const FLUIDSTATE = 'fluidState';
 const FLUIDCATHEGORY = 'fluidCathegory';
 const EPTYPE = 'epType';

@@ -84,18 +84,17 @@
       "fluidType1": {
         "minConditions": {
           "square": 3,
-          "pressMin": 0.1,
           "volMin": 0.1,
-          "presMinToREP": 0.5
+          "presMin": 0.5
         },
-        "cat": {
+        "cathegories": {
           "art43": {
             "condition1": {
               "volume": 1,
               "ps": 500
             },
             "condition2": {
-              "pxv": 200
+              "psXV": 200
             }
           },
           "I": {
@@ -106,10 +105,6 @@
           "II": {
             "condition1": {
               "ps": 500
-            },
-            "condition2": {
-              "volume": "lt11",
-              "ps": "gt500"
             }
           }
         }

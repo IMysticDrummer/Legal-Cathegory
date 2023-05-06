@@ -1,4 +1,4 @@
-import repRules from './databases/rep.json';
+import repRules from '../databases/rep.json';
 
 export const epTypes = Object.keys(repRules);
 
