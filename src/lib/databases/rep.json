@@ -4,34 +4,36 @@
       "fluidType1": {
         "minConditions": {
           "square": 1,
-          "pressMin": 0.1,
           "volMin": 0.1,
-          "presMinToREP": 0.5
+          "presMin": 0.5
         },
-        "cat": {
+        "cathegories": {
           "art43": {
             "condition1": {
               "volume": 1,
               "ps": 200
             },
             "condition2": {
-              "pxv": 25
+              "psXV": 25
             }
           },
           "I": {
             "condition1": {
-              "pxv": 50
+              "psXV": 50
             }
           },
           "II": {
             "condition1": {
-              "pxv": 50
+              "psXV": 200
             }
           },
           "III": {
             "condition1": {
-              "ps": 1000,
-              "pxv": 1000
+              "volume": 1,
+              "ps": 1000
+            },
+            "condition2": {
+              "psXV": 1000
             }
           }
         }
@@ -39,38 +41,40 @@
       "fluidType2": {
         "minConditions": {
           "square": 2,
-          "pressMin": 0.1,
           "volMin": 0.1,
-          "presMinToREP": 0.5
+          "presMin": 0.5
         },
-        "cat": {
+        "cathegories": {
           "art43": {
             "condition1": {
               "volume": 1,
               "ps": 1000
             },
             "condition2": {
-              "pxv": 50
+              "psXV": 50
             }
           },
           "I": {
             "condition1": {
-              "pxv": 200
+              "psXV": 200
             }
           },
           "II": {
             "condition1": {
-              "pxv": 1000
+              "psXV": 1000
             }
           },
           "III": {
             "condition1": {
-              "ps": 3000,
-              "pxv": 3000
+              "volume": 1,
+              "ps": 3000
             },
             "condition2": {
-              "ps": 4,
-              "volume": 1000
+              "volume": 1000,
+              "ps": 4
+            },
+            "condition3": {
+              "psXV": 3000
             }
           }
         }

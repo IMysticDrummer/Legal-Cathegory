@@ -19,9 +19,9 @@ const intialState = {
   fluidType: '',
   fluidCathegory: '',
   ps: 0,
-  vol: 0,
+  volume: 0,
   minConditions: {},
-  cat: {},
+  cathegories: {},
 };
 
 function EpCalculator() {
@@ -52,20 +52,20 @@ function EpCalculator() {
       newState = {
         ...state,
         minConditions: fluidDataResult.minConditions,
-        cat: fluidDataResult.cat,
+        cathegories: fluidDataResult.cathegories,
         fluidCathegory: data,
       };
     }
     if (event.target.name === 'PS') {
       newState = {
         ...state,
-        ps: data,
+        ps: parseFloat(data),
       };
     }
     if (event.target.name === 'V') {
       newState = {
         ...state,
-        vol: data,
+        volume: parseFloat(data),
       };
     }
     setState(newState);
@@ -121,7 +121,7 @@ function EpCalculator() {
           id='vol'
           label='Volumen (V)'
           name='V'
-          value={state.vol}
+          value={state.volume}
           onChange={change}
         />
       )}

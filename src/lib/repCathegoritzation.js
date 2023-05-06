@@ -1,28 +1,48 @@
+import stringCathegoryConstants from './databases/repConst';
+
+function repVesselsCathegorization(epReferenceData, epData) {
+  const { minConditions, cathegories } = epReferenceData;
+
+  const { presMin, volMin } = minConditions;
+
+  const { art43, I, II, III } = cathegories;
+  const reversedCathegories = { III, II, I, art43 };
+
+  const { ps, volume } = epData;
+
+  if (ps <= presMin || volume <= volMin) return stringCathegoryConstants.notREP;
+
+  let result = stringCathegoryConstants.IV;
+
+  for (const cathegory in reversedCathegories) {
+    for (const key in reversedCathegories[cathegory]) {
+      let psXVToEvaluate;
+      let volumeToEvaluate;
+      let psToEvaluate;
+      if (Object.hasOwn(reversedCathegories[cathegory][key], 'psXV')) {
+        psXVToEvaluate = reversedCathegories[cathegory][key].psXV;
+      }
+      if (Object.hasOwn(reversedCathegories[cathegory][key], 'volume')) {
+        volumeToEvaluate = reversedCathegories[cathegory][key].volume;
+        psToEvaluate = reversedCathegories[cathegory][key].ps;
+      }
+
+      if (
+        (volume <= volumeToEvaluate && ps <= psToEvaluate) ||
+        ps * volume <= psXVToEvaluate
+      )
+        result = stringCathegoryConstants[cathegory];
+    }
+  }
+
+  return result;
+}
+
 export default function repCathegorization(state) {
   if (state.fluid === '') return null;
   let cathegory;
 
-  const { volMin, presMin, psvMin, psMin } = state.minConditions;
-
-  const { ps, volume, cat } = state;
-
-  const { Art43, I, II, III } = state.cat;
-
-  const limitsKeys = Object.keys(cat);
-  let limits = [];
-  limitsKeys.forEach((element) => {
-    if (!isNaN(parseInt(element))) limits.push(parseInt(element));
-  });
-
-  if (ps * volume > III || ps > III) cathegory = 'Cat. IV';
-  if (ps * volume <= III) cathegory = 'Cat. III';
-  if (ps * volume <= II) cathegory = 'Cat. II';
-  if (ps * volume <= I) cathegory = 'Cat. I';
-  if ((volume <= volMin && ps <= II) || ps * volume <= Art43)
-    cathegory = 'Art 4.3';
-  if (ps <= presMin || volume <= 0.1) cathegory = 'Not REP';
-
-  console.log(limits);
-
-  return cathegory;
+  const resultat = repVesselsCathegorization(state, state);
+  console.log('RESULTADOOOO', resultat);
+  return;
 }
