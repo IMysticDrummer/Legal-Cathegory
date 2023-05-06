@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 //import { Form, InputGroup } from 'react-bootstrap';
 import {
   epTypes,
-  fluidTypes,
+  fluidStates,
   fluidCathegories,
   rep,
   fluidData,
@@ -10,13 +10,13 @@ import {
 import Selector from './Selector';
 import NumberInput from './NumberInput';
 import repCathegoritzation from '../../lib/repCathegoritzation';
-const FLUIDTYPE = 'fluidType';
+const FLUIDSTATE = 'fluidState';
 const FLUIDCATHEGORY = 'fluidCathegory';
 const EPTYPE = 'epType';
 
 const intialState = {
   epType: '',
-  fluidType: '',
+  fluidState: '',
   fluidCathegory: '',
   ps: 0,
   volume: 0,
@@ -27,8 +27,8 @@ const intialState = {
 function EpCalculator() {
   const [state, setState] = useState(intialState);
 
-  const fluidList = () => fluidTypes(state.epType);
-  const cathegoryList = () => fluidCathegories(state.epType, state.fluidType);
+  const fluidStatesList = () => fluidStates(state.epType);
+  const cathegoryList = () => fluidCathegories(state.epType, state.fluidState);
 
   const change = (event) => {
     const data = event.target.value;
@@ -40,14 +40,14 @@ function EpCalculator() {
         epType: data,
       };
     }
-    if (event.target.name === FLUIDTYPE) {
+    if (event.target.name === FLUIDSTATE) {
       newState = {
         ...state,
-        fluidType: data,
+        fluidState: data,
       };
     }
     if (event.target.name === FLUIDCATHEGORY) {
-      const fluidDataResult = fluidData(state.epType, state.fluidType, data);
+      const fluidDataResult = fluidData(state.epType, state.fluidState, data);
       console.log('fluidDataResult', fluidDataResult);
       newState = {
         ...state,
@@ -89,15 +89,15 @@ function EpCalculator() {
       />
       {state.epType !== '' && (
         <Selector
-          name={FLUIDTYPE}
+          name={FLUIDSTATE}
           label='Estado del fluido'
-          value={state.fluidType}
+          value={state.fluidState}
           onChange={change}
-          fluidSelected={state.fluidType}
-          fluidsList={fluidList()}
+          fluidSelected={state.fluidState}
+          fluidsList={fluidStatesList()}
         />
       )}
-      {state.fluidType !== '' && (
+      {state.fluidState !== '' && (
         <Selector
           name={FLUIDCATHEGORY}
           label='Tipo de fluido'
