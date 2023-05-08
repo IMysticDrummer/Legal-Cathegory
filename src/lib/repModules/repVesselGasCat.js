@@ -24,6 +24,7 @@ export default function repVesselGasCat(cathegories, ps, volume) {
         ps * volume <= psXVToEvaluate
       )
         result = stringCathegoryConstants[cathegory];
+      if (volume === 0 || ps === 0) result = stringCathegoryConstants.notREP;
     }
   }
 

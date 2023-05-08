@@ -1,7 +1,8 @@
 import stringCathegoryConstants from '../databases/repConst';
+import repVesselGasCat from './repVesselGasCat';
+import repVesselLiqCat from './repVesselLiqCat';
 
 function repVesselsCathegorization(epReferenceData, epData) {
-  debugger;
   const { minConditions, cathegories } = epReferenceData;
 
   const { presMin, volMin } = minConditions;
@@ -13,8 +14,8 @@ function repVesselsCathegorization(epReferenceData, epData) {
   let result;
 
   fluidState === 'gas' && fluidCathegory !== ''
-    ? (result = repVesselsCathegorization(cathegories, ps, volume))
-    : (result = 'todavía nada');
+    ? (result = repVesselGasCat(cathegories, ps, volume))
+    : (result = repVesselLiqCat(cathegories, ps, volume));
 
   return result;
 }
