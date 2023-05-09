@@ -7,6 +7,7 @@ export default function Selector({
   onChange,
   fluidSelected,
   fluidsList,
+  textToPrint,
   ...props
 }) {
   return (
@@ -32,7 +33,7 @@ export default function Selector({
               value={element}
               className='success'
             >
-              {element}
+              {textToPrint ? textToPrint(element) : element}
             </option>
           );
         })}
@@ -42,7 +43,7 @@ export default function Selector({
           fluidSelected !== '' ? 'col-md-2 m-0 p-2 text-bg-success' : undefined
         }
       >
-        {fluidSelected}
+        {textToPrint ? textToPrint(fluidSelected) : fluidSelected}
       </Form.Text>
     </InputGroup>
   );

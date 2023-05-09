@@ -10,6 +10,7 @@ import {
 import Selector from './Selector';
 import NumberInput from './NumberInput';
 import repCathegoritzation from '../../lib/repModules/repCathegoritzation';
+import texts from '../../lib/databases/texts/texts';
 const FLUIDSTATE = 'fluidState';
 const FLUIDCATHEGORY = 'fluidCathegory';
 const EPTYPE = 'epType';
@@ -48,7 +49,6 @@ function EpCalculator() {
     }
     if (event.target.name === FLUIDCATHEGORY) {
       const fluidDataResult = fluidData(state.epType, state.fluidState, data);
-      console.log('fluidDataResult', fluidDataResult);
       newState = {
         ...state,
         minConditions: fluidDataResult.minConditions,
@@ -86,6 +86,7 @@ function EpCalculator() {
         onChange={change}
         fluidSelected={state.epType}
         fluidsList={epTypes}
+        textToPrint={texts}
       />
       {state.epType !== '' && (
         <Selector
@@ -95,6 +96,7 @@ function EpCalculator() {
           onChange={change}
           fluidSelected={state.fluidState}
           fluidsList={fluidStatesList()}
+          textToPrint={texts}
         />
       )}
       {state.fluidState !== '' && (
@@ -105,6 +107,7 @@ function EpCalculator() {
           onChange={change}
           fluidSelected={state.fluidCathegory}
           fluidsList={cathegoryList()}
+          textToPrint={texts}
         />
       )}
       {state.fluidCathegory !== '' && (
@@ -112,7 +115,7 @@ function EpCalculator() {
           id='ps'
           label='Presión Máxima Admisible (PS)'
           name='PS'
-          value={state.ps}
+          value={state.ps || 0}
           onChange={change}
         />
       )}
@@ -121,7 +124,7 @@ function EpCalculator() {
           id='vol'
           label='Volumen (V)'
           name='V'
-          value={state.volume}
+          value={state.volume || 0}
           onChange={change}
         />
       )}

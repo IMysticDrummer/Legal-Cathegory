@@ -47,13 +47,14 @@ function getValuesToEvaluate(cathegoryObject) {
   };
 }
 
-export default function repVesselLiqCat(cathegories, ps, volume) {
+export default function repVesselCat(cathegories, ps, volume) {
   let result;
 
   const reversedCathegories = revertCathegories(cathegories);
-  if (reversedCathegories.III) result = stringCathegoryConstants.IV;
-  if (reversedCathegories.II) result = stringCathegoryConstants.III;
+  if (ps === 0 || volume === 0 || !reversedCathegories) return;
   if (reversedCathegories.I) result = stringCathegoryConstants.II;
+  if (reversedCathegories.II) result = stringCathegoryConstants.III;
+  if (reversedCathegories.III) result = stringCathegoryConstants.IV;
 
   for (const cathegory in reversedCathegories) {
     for (const key in reversedCathegories[cathegory]) {

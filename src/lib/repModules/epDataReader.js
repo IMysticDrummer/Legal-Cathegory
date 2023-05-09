@@ -12,7 +12,3 @@ export const fluidData = (epType, fluidState, fluidCathegory) => {
 };
 
 export const rep = repRules;
-
-// export function epDataReader() {
-//   console.log(Object.keys(rep));
-// }
