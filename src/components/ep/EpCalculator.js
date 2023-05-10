@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-//import { Form, InputGroup } from 'react-bootstrap';
+
 import {
   epTypes,
   fluidStates,
   fluidCathegories,
-  rep,
   fluidData,
 } from '../../lib/repModules/epDataReader';
 import Selector from './Selector';
@@ -27,6 +26,7 @@ const intialState = {
 
 function EpCalculator() {
   const [state, setState] = useState(intialState);
+  const [catResult, setCatResult] = useState();
 
   const fluidStatesList = () => fluidStates(state.epType);
   const cathegoryList = () => fluidCathegories(state.epType, state.fluidState);
@@ -73,6 +73,7 @@ function EpCalculator() {
 
   useEffect(() => {
     const result = repCathegoritzation(state);
+    setCatResult(result);
     console.log('resultado', result);
   }, [state]);
 
@@ -127,6 +128,9 @@ function EpCalculator() {
           value={state.volume || 0}
           onChange={change}
         />
+      )}
+      {catResult && (
+        <div className='container-lg text-bg-primary'>{catResult}</div>
       )}
     </div>
   );
