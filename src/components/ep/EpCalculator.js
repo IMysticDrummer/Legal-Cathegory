@@ -10,6 +10,7 @@ import Selector from './Selector';
 import NumberInput from './NumberInput';
 import repCathegoritzation from '../../lib/repModules/repCathegoritzation';
 import texts from '../../lib/databases/texts/texts';
+import ResultCard from '../ResultCard';
 const FLUIDSTATE = 'fluidState';
 const FLUIDCATHEGORY = 'fluidCathegory';
 const EPTYPE = 'epType';
@@ -24,6 +25,8 @@ const intialState = {
   cathegories: {},
 };
 
+const imgName = (name) => `${process.env.PUBLIC_URL}/REP/${name}.png`;
+
 function EpCalculator() {
   const [state, setState] = useState(intialState);
   const [catResult, setCatResult] = useState();
@@ -36,18 +39,22 @@ function EpCalculator() {
     let newState;
 
     if (event.target.name === EPTYPE) {
+      setCatResult();
       newState = {
-        ...state,
+        ...intialState,
         epType: data,
       };
     }
     if (event.target.name === FLUIDSTATE) {
+      setCatResult();
       newState = {
-        ...state,
+        ...intialState,
+        epType: state.epType,
         fluidState: data,
       };
     }
     if (event.target.name === FLUIDCATHEGORY) {
+      setCatResult();
       const fluidDataResult = fluidData(state.epType, state.fluidState, data);
       newState = {
         ...state,
@@ -74,7 +81,6 @@ function EpCalculator() {
   useEffect(() => {
     const result = repCathegoritzation(state);
     setCatResult(result);
-    console.log('resultado', result);
   }, [state]);
 
   return (
@@ -118,6 +124,7 @@ function EpCalculator() {
           name='PS'
           value={state.ps || 0}
           onChange={change}
+          min={0}
         />
       )}
       {state.ps > 0 && (
@@ -127,10 +134,15 @@ function EpCalculator() {
           name='V'
           value={state.volume || 0}
           onChange={change}
+          min={0}
         />
       )}
       {catResult && (
-        <div className='container-lg text-bg-primary'>{catResult}</div>
+        <ResultCard
+          header='Resultado'
+          title={catResult}
+          img={imgName(state.minConditions.square)}
+        />
       )}
     </div>
   );

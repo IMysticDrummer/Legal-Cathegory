@@ -6,7 +6,7 @@ function repVesselsCathegorization(epReferenceData, epData) {
 
   const { presMin, volMin } = minConditions;
 
-  const { ps, volume, fluidState, fluidCathegory } = epData;
+  const { ps, volume } = epData;
 
   if (ps <= presMin || volume <= volMin) return stringCathegoryConstants.notREP;
 
@@ -16,9 +16,14 @@ function repVesselsCathegorization(epReferenceData, epData) {
 }
 
 export default function repCathegorization(state) {
-  if (state.fluid === '') return null;
+  if (
+    state.fluid === '' ||
+    state.volume < state.minConditions.volMin ||
+    state.ps < state.minConditions.presMin
+  )
+    return null;
 
   const resultat = repVesselsCathegorization(state, state);
-  console.log('RESULTADOOOO', resultat);
+
   return resultat;
 }

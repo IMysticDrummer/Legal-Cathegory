@@ -6,6 +6,7 @@ export default function NumberInput({
   name,
   value,
   onChange,
+  min,
   ...props
 }) {
   return (
@@ -23,6 +24,7 @@ export default function NumberInput({
         value={value}
         onChange={onChange}
         className='col-md-6'
+        min={min}
       />
       {value > 0 && (
         <Form.Text
