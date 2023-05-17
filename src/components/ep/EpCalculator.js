@@ -11,6 +11,8 @@ import NumberInput from './NumberInput';
 import repCathegoritzation from '../../lib/repModules/repCathegoritzation';
 import texts from '../../lib/databases/texts/texts';
 import ResultCard from '../ResultCard';
+import LegalAdvisoryModal from '../common/LegalAdvisoryModal';
+
 const FLUIDSTATE = 'fluidState';
 const FLUIDCATHEGORY = 'fluidCathegory';
 const EPTYPE = 'epType';
@@ -30,6 +32,9 @@ const imgName = (name) => `${process.env.PUBLIC_URL}/REP/${name}.png`;
 function EpCalculator() {
   const [state, setState] = useState(intialState);
   const [catResult, setCatResult] = useState();
+  const [showAdvisory, setShowAdvisory] = useState(true);
+
+  const handleClose = () => setShowAdvisory(false);
 
   const fluidStatesList = () => fluidStates(state.epType);
   const cathegoryList = () => fluidCathegories(state.epType, state.fluidState);
@@ -86,6 +91,12 @@ function EpCalculator() {
   return (
     <div className='container-lg'>
       <h2>Calculadora de Equipos a Presión</h2>
+
+      <LegalAdvisoryModal
+        show={showAdvisory}
+        onHide={handleClose}
+      />
+
       <Selector
         name={EPTYPE}
         label='Tipo de equipo a presión'
