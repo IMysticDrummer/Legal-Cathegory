@@ -11,7 +11,6 @@ import NumberInput from './NumberInput';
 import repCathegoritzation from '../../lib/repModules/repCathegoritzation';
 import texts from '../../lib/databases/texts/texts';
 import ResultCard from '../ResultCard';
-import LegalAdvisoryModal from '../common/LegalAdvisoryModal';
 
 const FLUIDSTATE = 'fluidState';
 const FLUIDCATHEGORY = 'fluidCathegory';
@@ -32,14 +31,11 @@ const imgName = (name) => `${process.env.PUBLIC_URL}/REP/${name}.png`;
 function EpCalculator() {
   const [state, setState] = useState(intialState);
   const [catResult, setCatResult] = useState();
-  const [showAdvisory, setShowAdvisory] = useState(true);
-
-  const handleClose = () => setShowAdvisory(false);
 
   const fluidStatesList = () => fluidStates(state.epType);
   const cathegoryList = () => fluidCathegories(state.epType, state.fluidState);
 
-  const change = (event) => {
+  const onChangeSelector = (event) => {
     const data = event.target.value;
     let newState;
 
@@ -92,16 +88,11 @@ function EpCalculator() {
     <div className='container-lg'>
       <h2>Calculadora de Equipos a Presión</h2>
 
-      <LegalAdvisoryModal
-        show={showAdvisory}
-        onHide={handleClose}
-      />
-
       <Selector
         name={EPTYPE}
         label='Tipo de equipo a presión'
         value={state.epType}
-        onChange={change}
+        onChange={onChangeSelector}
         fluidSelected={state.epType}
         fluidsList={epTypes}
         textToPrint={texts}
@@ -111,7 +102,7 @@ function EpCalculator() {
           name={FLUIDSTATE}
           label='Estado del fluido'
           value={state.fluidState}
-          onChange={change}
+          onChange={onChangeSelector}
           fluidSelected={state.fluidState}
           fluidsList={fluidStatesList()}
           textToPrint={texts}
@@ -122,7 +113,7 @@ function EpCalculator() {
           name={FLUIDCATHEGORY}
           label='Tipo de fluido'
           value={state.fluidCathegory}
-          onChange={change}
+          onChange={onChangeSelector}
           fluidSelected={state.fluidCathegory}
           fluidsList={cathegoryList()}
           textToPrint={texts}
@@ -134,7 +125,7 @@ function EpCalculator() {
           label='Presión Máxima Admisible (PS)'
           name='PS'
           value={state.ps || 0}
-          onChange={change}
+          onChange={onChangeSelector}
           min={0}
         />
       )}
@@ -144,7 +135,7 @@ function EpCalculator() {
           label='Volumen (V)'
           name='V'
           value={state.volume || 0}
-          onChange={change}
+          onChange={onChangeSelector}
           min={0}
         />
       )}

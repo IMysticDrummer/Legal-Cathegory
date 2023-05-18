@@ -1,29 +1,39 @@
-import logo from './logo.svg';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-import EpCalculator from './components/EpCalculator';
+import EpCalculator from './components/ep/EpCalculator';
+import Layout from './components/common/Layout';
+
+const appTitle =
+  process.env.REACT_APP_TITLE ||
+  'NOOOOO C.E.R Categorización de Equipos Reglamentarios';
 
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>
-        <img
-          src={logo}
-          className='App-logo'
-          alt='logo'
+      <Routes>
+        <Route
+          path='/'
+          element={<Navigate to='/epcalculator' />}
         />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
+
+        <Route
+          path='/epcalculator'
+          element={<Layout title={appTitle} />}
         >
-          Learn React
-        </a>
-        <EpCalculator />
-      </header>
+          <Route
+            index
+            element={<EpCalculator />}
+          />
+        </Route>
+        <Route
+          path='/404'
+          element={<div>404</div>}
+        />
+        <Route
+          path='*'
+          element={<Navigate to='/404' />}
+        />
+      </Routes>
     </div>
   );
 }
