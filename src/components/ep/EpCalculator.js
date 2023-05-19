@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import {
+  epRD,
   epTypes,
   fluidStates,
   fluidCathegories,
@@ -86,7 +87,7 @@ function EpCalculator() {
 
   return (
     <div className='container-lg'>
-      <h2>Calculadora de Equipos a Presión</h2>
+      <h2>Calculadora de Equipos a Presión, según RD{epRD}</h2>
 
       <Selector
         name={EPTYPE}

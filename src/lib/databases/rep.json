@@ -1,145 +1,148 @@
 {
-  "vessels": {
-    "gas": {
-      "fluidType1": {
-        "minConditions": {
-          "square": 1,
-          "volMin": 0.1,
-          "presMin": 0.5
+  "RD": "709/2015 del 24 de julio",
+  "rules": {
+    "vessels": {
+      "gas": {
+        "fluidType1": {
+          "minConditions": {
+            "square": 1,
+            "volMin": 0.1,
+            "presMin": 0.5
+          },
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "volume": 1,
+                "ps": 200
+              },
+              "condition2": {
+                "psXV": 25
+              }
+            },
+            "I": {
+              "condition1": {
+                "psXV": 50
+              }
+            },
+            "II": {
+              "condition1": {
+                "psXV": 200
+              }
+            },
+            "III": {
+              "condition1": {
+                "volume": 1,
+                "ps": 1000
+              },
+              "condition2": {
+                "psXV": 1000
+              }
+            }
+          }
         },
-        "cathegories": {
-          "art43": {
-            "condition1": {
-              "volume": 1,
-              "ps": 200
+        "fluidType2": {
+          "minConditions": {
+            "square": 2,
+            "volMin": 0.1,
+            "presMin": 0.5
+          },
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "volume": 1,
+                "ps": 1000
+              },
+              "condition2": {
+                "psXV": 50
+              }
             },
-            "condition2": {
-              "psXV": 25
-            }
-          },
-          "I": {
-            "condition1": {
-              "psXV": 50
-            }
-          },
-          "II": {
-            "condition1": {
-              "psXV": 200
-            }
-          },
-          "III": {
-            "condition1": {
-              "volume": 1,
-              "ps": 1000
+            "I": {
+              "condition1": {
+                "psXV": 200
+              }
             },
-            "condition2": {
-              "psXV": 1000
+            "II": {
+              "condition1": {
+                "psXV": 1000
+              }
+            },
+            "III": {
+              "condition1": {
+                "volume": 1,
+                "ps": 3000
+              },
+              "condition2": {
+                "volume": 1000,
+                "ps": 4
+              },
+              "condition3": {
+                "psXV": 3000
+              }
             }
           }
         }
       },
-      "fluidType2": {
-        "minConditions": {
-          "square": 2,
-          "volMin": 0.1,
-          "presMin": 0.5
-        },
-        "cathegories": {
-          "art43": {
-            "condition1": {
-              "volume": 1,
-              "ps": 1000
-            },
-            "condition2": {
-              "psXV": 50
-            }
+      "liquid": {
+        "fluidType1": {
+          "minConditions": {
+            "square": 3,
+            "volMin": 0.1,
+            "presMin": 0.5
           },
-          "I": {
-            "condition1": {
-              "psXV": 200
-            }
-          },
-          "II": {
-            "condition1": {
-              "psXV": 1000
-            }
-          },
-          "III": {
-            "condition1": {
-              "volume": 1,
-              "ps": 3000
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "volume": 1,
+                "ps": 500
+              },
+              "condition2": {
+                "psXV": 200
+              }
             },
-            "condition2": {
-              "volume": 1000,
-              "ps": 4
+            "I": {
+              "condition1": {
+                "ps": 10
+              }
             },
-            "condition3": {
-              "psXV": 3000
+            "II": {
+              "condition1": {
+                "volume": 1,
+                "ps": "gt500"
+              },
+              "condition2": {
+                "ps": 500
+              }
             }
           }
-        }
-      }
-    },
-    "liquid": {
-      "fluidType1": {
-        "minConditions": {
-          "square": 3,
-          "volMin": 0.1,
-          "presMin": 0.5
         },
-        "cathegories": {
-          "art43": {
-            "condition1": {
-              "volume": 1,
-              "ps": 500
-            },
-            "condition2": {
-              "psXV": 200
-            }
+        "fluidType2": {
+          "minConditions": {
+            "square": 4,
+            "pressMin": 0.5,
+            "volMin": 0.1
           },
-          "I": {
-            "condition1": {
-              "ps": 10
-            }
-          },
-          "II": {
-            "condition1": {
-              "volume": 1,
-              "ps": "gt500"
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "volume": 10,
+                "ps": 1000
+              },
+              "condition2": {
+                "psXV": 10000
+              },
+              "condition3": {
+                "volume": "gt1000",
+                "ps": 10
+              }
             },
-            "condition2": {
-              "ps": 500
-            }
-          }
-        }
-      },
-      "fluidType2": {
-        "minConditions": {
-          "square": 4,
-          "pressMin": 0.5,
-          "volMin": 0.1
-        },
-        "cathegories": {
-          "art43": {
-            "condition1": {
-              "volume": 10,
-              "ps": 1000
-            },
-            "condition2": {
-              "psXV": 10000
-            },
-            "condition3": {
-              "volume": "gt1000",
-              "ps": 10
-            }
-          },
-          "I": {
-            "condition1": {
-              "volume": 10,
-              "ps": "gt1000"
-            },
-            "condition2": {
-              "ps": 500
+            "I": {
+              "condition1": {
+                "volume": 10,
+                "ps": "gt1000"
+              },
+              "condition2": {
+                "ps": 500
+              }
             }
           }
         }

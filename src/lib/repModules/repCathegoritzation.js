@@ -1,5 +1,5 @@
 import stringCathegoryConstants from '../databases/repConst';
-import repVesselLiqCat from './repVesselCat';
+import repVesselCat from './repVesselCat';
 
 function repVesselsCathegorization(epReferenceData, epData) {
   const { minConditions, cathegories } = epReferenceData;
@@ -10,7 +10,8 @@ function repVesselsCathegorization(epReferenceData, epData) {
 
   if (ps <= presMin || volume <= volMin) return stringCathegoryConstants.notREP;
 
-  const result = repVesselLiqCat(cathegories, ps, volume);
+  //TODO Diferenciar entre los recipientes y el resto de tipos de equipos a presión
+  const result = repVesselCat(cathegories, ps, volume);
 
   return result;
 }
