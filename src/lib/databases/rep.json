@@ -147,6 +147,51 @@
           }
         }
       }
+    },
+    "flame": {
+      "any": {
+        "fluidType": {
+          "minConditions": {
+            "square": 5,
+            "volMin": 0.1,
+            "presMin": 0.5
+          },
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "volume": 2
+              }
+            },
+            "I": {
+              "condition1": {
+                "psXV": 50
+              }
+            },
+            "II": {
+              "condition1": {
+                "ps": 32,
+                "volume": 10
+              },
+              "condition2": {
+                "psXV": 200
+              }
+            },
+            "III": {
+              "condition1": {
+                "volume": 100,
+                "ps": 32
+              },
+              "condition2": {
+                "psXV": 3000
+              },
+              "condition3": {
+                "volume": 1000,
+                "ps": 3
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

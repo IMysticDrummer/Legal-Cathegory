@@ -6,12 +6,14 @@ function repVesselsCathegorization(epReferenceData, epData) {
 
   const { presMin, volMin } = minConditions;
 
-  const { ps, volume } = epData;
+  const { ps, volume, epType } = epData;
 
   if (ps <= presMin || volume <= volMin) return stringCathegoryConstants.notREP;
 
   //TODO Diferenciar entre los recipientes y el resto de tipos de equipos a presión
-  const result = repVesselCat(cathegories, ps, volume);
+  let result;
+  if (epType === 'vessels') result = repVesselCat(cathegories, ps, volume);
+  if (epType === 'flame') result = repVesselCat(cathegories, ps, volume);
 
   return result;
 }
