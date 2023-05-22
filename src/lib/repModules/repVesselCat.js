@@ -1,15 +1,18 @@
 import stringCathegoryConstants from '../databases/repConst';
 import repGetValuesToEvaluate from './repGetValuesToEvaluate';
+import repMaxCathegory from './repMaxCathegory';
 import repRevertCathegories from './repRevertCathegories';
 
 export default function repVesselCat(cathegories, ps, volume) {
-  let result;
+  // let result;
 
   const reversedCathegories = repRevertCathegories(cathegories);
   if (ps === 0 || volume === 0 || !reversedCathegories) return;
-  if (reversedCathegories.I) result = stringCathegoryConstants.II;
-  if (reversedCathegories.II) result = stringCathegoryConstants.III;
-  if (reversedCathegories.III) result = stringCathegoryConstants.IV;
+  // if (reversedCathegories.I) result = stringCathegoryConstants.II;
+  // if (reversedCathegories.II) result = stringCathegoryConstants.III;
+  // if (reversedCathegories.III) result = stringCathegoryConstants.IV;
+
+  let result = repMaxCathegory(reversedCathegories);
 
   for (const cathegory in reversedCathegories) {
     for (const key in reversedCathegories[cathegory]) {
