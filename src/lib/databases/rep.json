@@ -154,12 +154,15 @@
           "minConditions": {
             "square": 5,
             "volMin": 0.1,
-            "presMin": 0.5
+            "presMin": 0.5,
+            "presToCatIV": 32,
+            "volMaxArt43": 2
           },
           "cathegories": {
             "art43": {
               "condition1": {
-                "volume": 2
+                "volume": 2,
+                "ps": 999999999
               }
             },
             "I": {
@@ -178,7 +181,7 @@
             },
             "III": {
               "condition1": {
-                "volume": 100,
+                "volume": 93.75,
                 "ps": 32
               },
               "condition2": {

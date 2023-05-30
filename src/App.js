@@ -5,7 +5,7 @@ import Layout from './components/common/Layout';
 
 const appTitle =
   process.env.REACT_APP_TITLE ||
-  'NOOOOO C.E.R Categorización de Equipos Reglamentarios';
+  'C.E.R Categorización de Equipos Reglamentarios';
 
 function App() {
   return (

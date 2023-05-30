@@ -4,13 +4,8 @@ import repMaxCathegory from './repMaxCathegory';
 import repRevertCathegories from './repRevertCathegories';
 
 export default function repVesselCat(cathegories, ps, volume) {
-  // let result;
-
   const reversedCathegories = repRevertCathegories(cathegories);
   if (ps === 0 || volume === 0 || !reversedCathegories) return;
-  // if (reversedCathegories.I) result = stringCathegoryConstants.II;
-  // if (reversedCathegories.II) result = stringCathegoryConstants.III;
-  // if (reversedCathegories.III) result = stringCathegoryConstants.IV;
 
   let result = repMaxCathegory(reversedCathegories);
 
@@ -49,8 +44,6 @@ export default function repVesselCat(cathegories, ps, volume) {
         ps * volume <= psXVToEvaluate
       )
         result = stringCathegoryConstants[cathegory];
-
-      if (volume === 0 || ps === 0) result = stringCathegoryConstants.notREP;
     }
   }
 
