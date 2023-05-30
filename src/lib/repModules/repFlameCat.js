@@ -20,18 +20,18 @@ export default function repFlameCat(cathegories, ps, volume) {
 
     let query = [];
     conditions.forEach((element) => {
-      let control = false;
+      //let control = false;
       if (
         element.psToEvaluate &&
         ps <= element.psToEvaluate &&
         volume <= element.volumeToEvaluate
       ) {
         query.push(true);
-        control = true;
+        //  control = true;
       }
       if (element.psXVToEvaluate && ps * volume <= element.psXVToEvaluate) {
         query.push(true);
-        control = true;
+        //  control = true;
       }
     });
 
