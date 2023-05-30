@@ -1,3 +1,60 @@
+# C.E.R Categorización de equipos reglamentarios
+
+Esta aplicación está pensada para ayudar a la categorización de diferentes tipos de equipos reglamentarios.
+
+## Configuración
+
+Esta aplicación se configura a través de archivos JSON.
+
+### Reglamento de Equipos a Presión (REP)
+
+El archivo de configuración se encuentra en lib/databases/rep.json.
+
+#### Primer nivel
+
+- Clave "RD": Texto con el reglamento que se está aplicando. Por ejemplo: "709/2015 del 24 de julio"
+- Clave "rules": cotiene el según nivel con las reglas a aplicar
+
+#### Segundo nivel (dentro de la clave "rules")
+
+- claves con los tipos de equipos:
+  - "vessels": recipientes a presión
+  - "flame": equipos sometidos a llama y ollas a presión
+
+#### Tercer nivel (dentro de cada clave de tipo de equipo)
+
+- Clase de fluído:
+  - gas: gases
+  - liquid: líquidos
+  - any: cualquier clase de fluído
+
+#### Cuarto nivel (dentro de cada clase de fluído)
+
+- Tipo de fluído:
+  - fluidType: todos los tipos de fluídos
+  - fluidType1: fluidos de tipo peligroso según el reglamento
+  - fluidType2: fluidos de tipo no peligroso según el reglamento
+
+#### Quinto nivel (dentro de los tipos de fluído)
+
+- minConditions: condiciones mínimas para que entre en reglamento.
+  - square: número de cuadro que se aplica según los niveles anteriores
+  - volMin: volumen mínimo para que se tenga en cuenta en el reglamento
+  - presMin: presión mínima para que se tenga en cuenta en el reglamento
+  - pressToCatIV: se aplica en el caso de que haya una presión a partir de la cuál se aplica categoría IV, sean cuales sean las otras condiciones
+  - volMaxArt43: se aplica en el caso de que haya un volumen hasta el cuál se aplique el artículo 4.3, sean cuales sean las otras condiciones
+  - cathegories: contienen las condiciones para cada tipo de categoría aplicable
+
+#### Sexto nivel (dentro de "cathegories")
+
+- Nivel de categoría aplicable: se rellenan los aplicables a las condiciones anteriores (art43, I, II, III)  
+  La categoría IV es la categoría por defecto. La aplicación reduce la categoría según se cumplan las condiciones indicadas en los siguientes niveles
+  - condition*x* (por ejemplo condition1): dividir la curva en los "trozos" aplicables
+    - volume: volumen máximo aplicable a la condición
+    - ps: presión máxima admisible aplicable a la condición  
+      o
+    - psXV: valor máximo aplicable a la condición, que consiste en el producto de la presión máxima admisible por el volumen del recipiente
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
