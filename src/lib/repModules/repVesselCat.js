@@ -3,9 +3,9 @@ import repGetValuesToEvaluate from './repGetValuesToEvaluate';
 import repMaxCathegory from './repMaxCathegory';
 import repRevertCathegories from './repRevertCathegories';
 
-export default function repVesselCat(cathegories, ps, volume) {
+export default function repVesselCat(cathegories, ps, volume, dn) {
   const reversedCathegories = repRevertCathegories(cathegories);
-  if (ps === 0 || volume === 0 || !reversedCathegories) return;
+  if (ps === 0 || volume === 0 || dn === 0 || !reversedCathegories) return;
 
   let result = repMaxCathegory(reversedCathegories);
 

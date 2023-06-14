@@ -78,6 +78,12 @@ function EpCalculator() {
         volume: parseFloat(data),
       };
     }
+    if (event.target.name === 'Dn') {
+      newState = {
+        ...state,
+        dn: parseFloat(data),
+      };
+    }
     setState(newState);
   };
 

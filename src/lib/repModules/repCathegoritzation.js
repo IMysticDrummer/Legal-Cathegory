@@ -5,13 +5,14 @@ import repVesselCat from './repVesselCat';
 function repVesselsCathegorization(epReferenceData, epData) {
   const { minConditions, cathegories } = epReferenceData;
 
-  const { presMin, volMin } = minConditions;
+  const { presMin, volMin, dnMin } = minConditions;
 
-  const { ps, volume } = epData;
+  const { ps, volume, dn } = epData;
 
-  if (ps <= presMin || volume <= volMin) return stringCathegoryConstants.notREP;
+  if (ps <= presMin || (volume && volume <= volMin) || (dn && dn <= dnMin))
+    return stringCathegoryConstants.notREP;
 
-  const result = repVesselCat(cathegories, ps, volume);
+  const result = repVesselCat(cathegories, ps, volume, dn);
 
   return result;
 }
