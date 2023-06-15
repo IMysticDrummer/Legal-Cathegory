@@ -5,7 +5,7 @@ import repRevertCathegories from './repRevertCathegories';
 
 export default function repVesselCat(cathegories, ps, volume, dn) {
   const reversedCathegories = repRevertCathegories(cathegories);
-  if (ps === 0 || volume === 0 || dn === 0 || !reversedCathegories) return;
+  if (ps === 0 || (volume === 0 && dn === 0) || !reversedCathegories) return;
 
   let result = repMaxCathegory(reversedCathegories);
 
@@ -17,6 +17,8 @@ export default function repVesselCat(cathegories, ps, volume, dn) {
         psToEvaluate,
         greaterPS,
         greaterVolume,
+        dnToEvaluate,
+        psXDNToEvaluate,
       } = repGetValuesToEvaluate(reversedCathegories[cathegory][key]);
 
       if (greaterPS) {
@@ -40,8 +42,13 @@ export default function repVesselCat(cathegories, ps, volume, dn) {
       } else if (
         (volume <= volumeToEvaluate && ps <= psToEvaluate) ||
         (volume <= volumeToEvaluate && psToEvaluate === undefined) ||
-        (volumeToEvaluate === undefined && ps <= psToEvaluate) ||
-        ps * volume <= psXVToEvaluate
+        (volumeToEvaluate === undefined &&
+          dnToEvaluate === undefined &&
+          ps <= psToEvaluate) ||
+        (dn <= dnToEvaluate && ps <= psToEvaluate) ||
+        (dn <= dnToEvaluate && psToEvaluate === undefined) ||
+        ps * volume <= psXVToEvaluate ||
+        ps * dn <= psXDNToEvaluate
       )
         result = stringCathegoryConstants[cathegory];
     }

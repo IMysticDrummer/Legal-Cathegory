@@ -35,9 +35,10 @@ function repFlameCathegorization(epReferenceData, epData) {
 
 export default function repCathegorization(state) {
   if (
-    state.fluid === '' ||
+    state.fluidCathegory === '' ||
     state.volume < state.minConditions.volMin ||
-    state.ps < state.minConditions.presMin
+    state.ps < state.minConditions.presMin ||
+    state.dn < state.minConditions.dnMin
   )
     return null;
 
@@ -45,7 +46,7 @@ export default function repCathegorization(state) {
 
   //TODO Diferenciar entre los recipientes y el resto de tipos de equipos a presión
 
-  if (state.epType === 'vessels')
+  if (state.epType === 'vessels' || state.epType === 'pipes')
     resultat = repVesselsCathegorization(state, state);
   if (state.epType === 'flame')
     resultat = repFlameCathegorization(state, state);
