@@ -8,6 +8,7 @@ const textsObject = {
   gas: 'Gas',
   liquid: 'Líquido',
   any: 'Cualquiera',
+  pipes: 'Tuberías',
 };
 
 export default function texts(key) {

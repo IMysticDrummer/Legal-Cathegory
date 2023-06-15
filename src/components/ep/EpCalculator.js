@@ -23,6 +23,7 @@ const intialState = {
   fluidCathegory: '',
   ps: 0,
   volume: 0,
+  dn: 0,
   minConditions: {},
   cathegories: {},
 };
@@ -75,6 +76,12 @@ function EpCalculator() {
       newState = {
         ...state,
         volume: parseFloat(data),
+      };
+    }
+    if (event.target.name === 'Dn') {
+      newState = {
+        ...state,
+        dn: parseFloat(data),
       };
     }
     setState(newState);
@@ -130,12 +137,23 @@ function EpCalculator() {
           min={0}
         />
       )}
-      {state.ps > 0 && (
+      {state.ps > 0 &&
+        (state.epType === 'vessels' || state.epType === 'flame') && (
+          <NumberInput
+            id='vol'
+            label='Volumen (V)'
+            name='V'
+            value={state.volume || 0}
+            onChange={onChangeSelector}
+            min={0}
+          />
+        )}
+      {state.ps > 0 && state.epType === 'pipes' && (
         <NumberInput
-          id='vol'
-          label='Volumen (V)'
-          name='V'
-          value={state.volume || 0}
+          id='dia'
+          label='Diameter (Dn)'
+          name='Dn'
+          value={state.dn || 0}
           onChange={onChangeSelector}
           min={0}
         />

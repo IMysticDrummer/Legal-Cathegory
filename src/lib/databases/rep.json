@@ -195,6 +195,151 @@
           }
         }
       }
+    },
+    "pipes": {
+      "gas": {
+        "fluidType1": {
+          "minConditions": {
+            "square": 6,
+            "dnMin": 0.1,
+            "presMin": 0.5
+          },
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "dn": 25,
+                "ps": 99999999
+              }
+            },
+            "I": {
+              "condition1": {
+                "psXDN": 1000
+              },
+              "condition2": {
+                "dn": 100,
+                "ps": 10
+              }
+            },
+            "II": {
+              "condition1": {
+                "dn": 100,
+                "ps": 999999999
+              },
+              "condition2": {
+                "psXDN": 3500
+              },
+              "condition3": {
+                "dn": 350,
+                "ps": 10
+              }
+            }
+          }
+        },
+        "fluidType2": {
+          "minConditions": {
+            "square": 7,
+            "dnMin": 0.1,
+            "presMin": 0.5
+          },
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "dn": 32,
+                "ps": 99999999
+              },
+              "condition2": {
+                "psXDN": 1000
+              }
+            },
+            "I": {
+              "condition1": {
+                "psXDN": 3500
+              },
+              "condition2": {
+                "dn": 100,
+                "ps": 99999999
+              }
+            },
+            "II": {
+              "condition1": {
+                "dn": 250,
+                "ps": 999999999
+              },
+              "condition2": {
+                "psXDN": 5000
+              }
+            }
+          }
+        }
+      },
+      "liquid": {
+        "fluidType1": {
+          "minConditions": {
+            "square": 8,
+            "dnMin": 0.1,
+            "presMin": 0.5
+          },
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "dn": 25,
+                "ps": 99999999
+              },
+              "condition2": {
+                "psXDN": 2000
+              }
+            },
+            "I": {
+              "condition1": {
+                "ps": 10,
+                "dn": 99999999
+              },
+              "condition2": {
+                "dn": 100,
+                "ps": 10
+              }
+            },
+            "II": {
+              "condition1": {
+                "dn": 99999999,
+                "ps": 500
+              }
+            }
+          }
+        },
+        "fluidType2": {
+          "minConditions": {
+            "square": 9,
+            "dnMin": 0.1,
+            "presMin": 0.5
+          },
+          "cathegories": {
+            "art43": {
+              "condition1": {
+                "dn": 200,
+                "ps": 99999999
+              },
+              "condition2": {
+                "psXDN": 5000
+              },
+              "condition3": {
+                "dn": 99999999,
+                "ps": 10
+              }
+            },
+            "I": {
+              "condition1": {
+                "ps": 500,
+                "dn": 99999999
+              },
+              "condition2": {
+                "dn": 100,
+                "ps": 10
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

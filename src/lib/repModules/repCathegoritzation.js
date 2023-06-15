@@ -1,17 +1,18 @@
 import stringCathegoryConstants from '../databases/repConst';
 import repFlameCat from './repFlameCat';
-import repVesselCat from './repVesselCat';
+import repVesselPipeCat from './repVesselPipeCat';
 
-function repVesselsCathegorization(epReferenceData, epData) {
+function repVesselsPipesCathegorization(epReferenceData, epData) {
   const { minConditions, cathegories } = epReferenceData;
 
-  const { presMin, volMin } = minConditions;
+  const { presMin, volMin, dnMin } = minConditions;
 
-  const { ps, volume } = epData;
+  const { ps, volume, dn } = epData;
 
-  if (ps <= presMin || volume <= volMin) return stringCathegoryConstants.notREP;
+  if (ps <= presMin || (volume && volume <= volMin) || (dn && dn <= dnMin))
+    return stringCathegoryConstants.notREP;
 
-  const result = repVesselCat(cathegories, ps, volume);
+  const result = repVesselPipeCat(cathegories, ps, volume, dn);
 
   return result;
 }
@@ -34,9 +35,10 @@ function repFlameCathegorization(epReferenceData, epData) {
 
 export default function repCathegorization(state) {
   if (
-    state.fluid === '' ||
+    state.fluidCathegory === '' ||
     state.volume < state.minConditions.volMin ||
-    state.ps < state.minConditions.presMin
+    state.ps < state.minConditions.presMin ||
+    state.dn < state.minConditions.dnMin
   )
     return null;
 
@@ -44,8 +46,8 @@ export default function repCathegorization(state) {
 
   //TODO Diferenciar entre los recipientes y el resto de tipos de equipos a presión
 
-  if (state.epType === 'vessels')
-    resultat = repVesselsCathegorization(state, state);
+  if (state.epType === 'vessels' || state.epType === 'pipes')
+    resultat = repVesselsPipesCathegorization(state, state);
   if (state.epType === 'flame')
     resultat = repFlameCathegorization(state, state);
 
