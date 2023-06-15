@@ -13,9 +13,9 @@ export default function CerNavbar({ children, menus, ...props }) {
           <Navbar.Collapse id='cer-navbar'>
             <Nav className='cer-auto'>
               <Nav.Link href='/'>Home</Nav.Link>
-              <Nav.Link href='#about'>About</Nav.Link>
+              {false && <Nav.Link href='#about'>About</Nav.Link>}
               <NavDropdown
-                title='Actions'
+                title='Reglamento'
                 id='cer-navbar-dropdown'
               >
                 <NavDropdown.Item href='/epcalculator'>
