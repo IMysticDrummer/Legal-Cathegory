@@ -101,16 +101,18 @@
             },
             "I": {
               "condition1": {
-                "ps": 10
+                "ps": 10,
+                "volume": 999999
               }
             },
             "II": {
               "condition1": {
                 "volume": 1,
-                "ps": "gt500"
+                "ps": 999999
               },
               "condition2": {
-                "ps": 500
+                "ps": 500,
+                "volume": 999999
               }
             }
           }
@@ -131,17 +133,18 @@
                 "psXV": 10000
               },
               "condition3": {
-                "volume": "gt1000",
+                "volume": 999999,
                 "ps": 10
               }
             },
             "I": {
               "condition1": {
                 "volume": 10,
-                "ps": "gt1000"
+                "ps": 999999
               },
               "condition2": {
-                "ps": 500
+                "ps": 500,
+                "volume": 999999
               }
             }
           }
