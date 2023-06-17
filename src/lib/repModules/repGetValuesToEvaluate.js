@@ -4,8 +4,7 @@ export default function repGetValuesToEvaluate(cathegoryObject) {
   let dnToEvaluate;
   let psToEvaluate;
   let psXDNToEvaluate;
-  let greaterPS = false;
-  let greaterVolume = false;
+
   if (Object.hasOwn(cathegoryObject, 'psXV')) {
     psXVToEvaluate = cathegoryObject.psXV;
   }
@@ -21,14 +20,6 @@ export default function repGetValuesToEvaluate(cathegoryObject) {
     let psReaded = cathegoryObject.ps;
     let dnReaded = cathegoryObject.dn;
 
-    if (typeof volumeReaded === 'string') {
-      volumeReaded = parseFloat(volumeReaded.split('gt')[1]);
-      greaterVolume = true;
-    }
-    if (typeof psReaded === 'string') {
-      psReaded = parseFloat(psReaded.split('gt')[1]);
-      greaterPS = true;
-    }
     volumeToEvaluate = volumeReaded;
     psToEvaluate = psReaded;
     dnToEvaluate = dnReaded;
@@ -38,8 +29,6 @@ export default function repGetValuesToEvaluate(cathegoryObject) {
     psXVToEvaluate,
     volumeToEvaluate,
     psToEvaluate,
-    greaterPS,
-    greaterVolume,
     dnToEvaluate,
     psXDNToEvaluate,
   };

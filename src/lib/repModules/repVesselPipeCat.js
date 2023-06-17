@@ -15,31 +15,11 @@ export default function repVesselPipeCat(cathegories, ps, volume, dn) {
         psXVToEvaluate,
         volumeToEvaluate,
         psToEvaluate,
-        greaterPS,
-        greaterVolume,
         dnToEvaluate,
         psXDNToEvaluate,
       } = repGetValuesToEvaluate(reversedCathegories[cathegory][key]);
 
-      if (greaterPS) {
-        if (
-          (volume <= volumeToEvaluate && ps > psToEvaluate) ||
-          ps * volume <= psXVToEvaluate
-        )
-          result = stringCathegoryConstants[cathegory];
-      } else if (greaterVolume) {
-        if (
-          (volume > volumeToEvaluate && ps <= psToEvaluate) ||
-          ps * volume <= psXVToEvaluate
-        )
-          result = stringCathegoryConstants[cathegory];
-      } else if (greaterVolume && greaterPS) {
-        if (
-          (volume > volumeToEvaluate && ps > psToEvaluate) ||
-          ps * volume <= psXVToEvaluate
-        )
-          result = stringCathegoryConstants[cathegory];
-      } else if (
+      if (
         (volume <= volumeToEvaluate && ps <= psToEvaluate) ||
         (volume <= volumeToEvaluate && psToEvaluate === undefined) ||
         (volumeToEvaluate === undefined &&
