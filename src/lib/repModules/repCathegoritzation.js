@@ -2,12 +2,37 @@ import stringCathegoryConstants from '../databases/repConst';
 import repFlameCat from './repFlameCat';
 import repVesselPipeCat from './repVesselPipeCat';
 
-function repVesselsPipesCathegorization(epReferenceData, epData) {
+const getCommonData = (epReferenceData, epData) => {
   const { minConditions, cathegories } = epReferenceData;
 
-  const { presMin, volMin, dnMin } = minConditions;
+  const { presMin, volMin, dnMin, presToCatIV, volMaxArt43 } = minConditions;
 
   const { ps, volume, dn } = epData;
+
+  return {
+    presMin,
+    volMin,
+    dnMin,
+    presToCatIV,
+    volMaxArt43,
+    cathegories,
+    ps,
+    volume,
+    dn,
+  };
+};
+
+function repVesselsPipesCathegorization(epReferenceData, epData) {
+  // const { minConditions, cathegories } = epReferenceData;
+
+  // const { presMin, volMin, dnMin } = minConditions;
+
+  // const { ps, volume, dn } = epData;
+
+  const { cathegories, presMin, volMin, dnMin, ps, volume, dn } = getCommonData(
+    epReferenceData,
+    epData
+  );
 
   if (ps <= presMin || (volume && volume <= volMin) || (dn && dn <= dnMin))
     return stringCathegoryConstants.notREP;
@@ -18,11 +43,14 @@ function repVesselsPipesCathegorization(epReferenceData, epData) {
 }
 
 function repFlameCathegorization(epReferenceData, epData) {
-  const { minConditions, cathegories } = epReferenceData;
+  // const { minConditions, cathegories } = epReferenceData;
 
-  const { presMin, volMin, presToCatIV, volMaxArt43 } = minConditions;
+  // const { presMin, volMin, presToCatIV, volMaxArt43 } = minConditions;
 
-  const { ps, volume } = epData;
+  // const { ps, volume } = epData;
+
+  const { cathegories, presMin, volMin, presToCatIV, volMaxArt43, ps, volume } =
+    getCommonData(epReferenceData, epData);
 
   if (ps <= presMin || volume <= volMin) return stringCathegoryConstants.notREP;
   if (ps > presToCatIV && volume > volMaxArt43)
