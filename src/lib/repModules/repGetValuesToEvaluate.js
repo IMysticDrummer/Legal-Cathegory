@@ -9,8 +9,8 @@ export default function repGetValuesToEvaluate(cathegoryObject) {
   if (Object.hasOwn(cathegoryObject, 'psXV')) {
     psXVToEvaluate = cathegoryObject.psXV;
   }
-  if (Object.hasOwn(cathegoryObject, 'psXDNToEvaluate')) {
-    psXDNToEvaluate = cathegoryObject.psXDNToEvaluate;
+  if (Object.hasOwn(cathegoryObject, 'psXDN')) {
+    psXDNToEvaluate = cathegoryObject.psXDN;
   }
   if (
     Object.hasOwn(cathegoryObject, 'volume') ||

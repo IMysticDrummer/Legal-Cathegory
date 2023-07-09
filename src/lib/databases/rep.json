@@ -118,7 +118,7 @@
         "fluidType2": {
           "minConditions": {
             "square": 4,
-            "pressMin": 0.5,
+            "presMin": 0.5,
             "volMin": 0.1
           },
           "cathegories": {
