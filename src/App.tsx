@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import EpCalculator from './components/ep/EpCalculator';
+import TmCO2Calculator from './components/rif/TmCO2Calculator';
 import Layout from './components/common/Layout';
 
 const appTitle =
@@ -13,16 +14,15 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<Navigate to='/epcalculator' />}
-        />
-
-        <Route
-          path='/epcalculator'
           element={<Layout title={appTitle} />}
         >
           <Route
-            index
+            path='/epcalculator'
             element={<EpCalculator />}
+          />
+          <Route
+            path='tmCO2Calculator'
+            element={<TmCO2Calculator />}
           />
         </Route>
         <Route

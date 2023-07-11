@@ -21,6 +21,9 @@ export default function CerNavbar({ children, menus, ...props }) {
                 <NavDropdown.Item href='/epcalculator'>
                   Equipos a Presión
                 </NavDropdown.Item>
+                <NavDropdown.Item href='/tmCO2Calculator'>
+                  Calculadora TmCO2
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

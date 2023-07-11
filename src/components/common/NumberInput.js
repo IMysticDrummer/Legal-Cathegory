@@ -10,7 +10,7 @@ export default function NumberInput({
   ...props
 }) {
   return (
-    <InputGroup className='mb-3 primary row align-items-center'>
+    <InputGroup className='my-3 primary row align-items-center'>
       <InputGroup.Text
         id={id}
         className='primary col-md-4'

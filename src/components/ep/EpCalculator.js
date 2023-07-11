@@ -8,7 +8,7 @@ import {
   fluidData,
 } from '../../lib/repModules/epDataReader';
 import Selector from './Selector';
-import NumberInput from './NumberInput';
+import NumberInput from '../common/NumberInput';
 import repCathegoritzation from '../../lib/repModules/repCathegoritzation';
 import texts from '../../lib/databases/texts/texts';
 import ResultCard from '../ResultCard';
