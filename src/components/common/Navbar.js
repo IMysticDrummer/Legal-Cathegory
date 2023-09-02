@@ -10,6 +10,7 @@ export default function CerNavbar({ children, menus, ...props }) {
       >
         <Container>
           <Navbar.Brand href='/'>C.E.R</Navbar.Brand>
+          <Navbar.Toggle aria-controls='cer-navbar' />
           <Navbar.Collapse id='cer-navbar'>
             <Nav className='cer-auto'>
               <Nav.Link href='/'>Home</Nav.Link>
