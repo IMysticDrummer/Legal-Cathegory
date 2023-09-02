@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function CerNavbar({ children, menus, ...props }) {
   return (
@@ -13,17 +14,34 @@ export default function CerNavbar({ children, menus, ...props }) {
           <Navbar.Toggle aria-controls='cer-navbar' />
           <Navbar.Collapse id='cer-navbar'>
             <Nav className='cer-auto'>
-              <Nav.Link href='/'>Home</Nav.Link>
+              <Nav.Item>
+                <Link
+                  className='nav-link'
+                  to='/'
+                >
+                  Home
+                </Link>
+              </Nav.Item>
               {false && <Nav.Link href='#about'>About</Nav.Link>}
               <NavDropdown
                 title='Reglamento'
                 id='cer-navbar-dropdown'
               >
-                <NavDropdown.Item href='/epcalculator'>
-                  Equipos a Presión
+                <NavDropdown.Item>
+                  <Link
+                    className='dropdown-item'
+                    to='/epcalculator'
+                  >
+                    Equipos a Presión
+                  </Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item href='/tmCO2Calculator'>
-                  Calculadora TmCO2
+                <NavDropdown.Item>
+                  <Link
+                    className='dropdown-item'
+                    to='/tmCO2Calculator'
+                  >
+                    Calculadora TmCO2
+                  </Link>
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
